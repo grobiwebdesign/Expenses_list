@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+<body>
+
+	<section class="section">
+		<div id="app" class="container">
+			<table class="table is-striped is-fullwidth">
+
+				<tr class="th">
+					<th>Index</th>
+					<th>Service</th>
+					<th>Cost</th>
+					<th></th>
+				</tr>
+
+				<tr class="items" v-for="(item, index) in items" :key="'itm'+index">
+				    
+				    <td class="index"> {{ index+1 }} </td>
+						<td class="service"> {{ items.product }} </td>
+						<td class="price"> £{{ items.cost }} </td>
+				    <td> <button class="button is-small is-danger" @click='deleteItem(index)'>Delete</button> </td>
+					
+				</tr>
+
+				<tr class="add_new_item" v-for="(new_items, index) in new_item" :key="'new_itm'+index">
+				    <th> </th>
+				    <th> <input class="input is-small" type="text" placeholder="Item Name" v-model="new_items.product"> </th>
+				    <th> <input class="input is-small" type="text" placeholder="The Price" v-model="new_items.cost"> </th>
+				    <th> <button class="button is-info is-small" @click='addItem()'>Add To List</button> </th>
+				</tr>
+	
+  				<tr class="is-selected">
+    
+			    	<td>Total</td>
+				    <td></td>
+				    <td>£{{ result.toFixed(2) }}</td>
+				    <td></td>
+		    
+				</tr>     
+			</table> 
+		</div>
+	</section>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/app.js"></script>
+</html>
+
+
